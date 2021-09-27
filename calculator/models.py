@@ -34,12 +34,14 @@ class Calculator(models.Model):
 
 class CalculatorInfo(models.Model):
     calculator = models.ForeignKey(Calculator, on_delete=CASCADE, related_name='caculator_info')
-    title = models.CharField(max_length=100)
-    description = models.TextField(max_length=1000)
-    image = models.ImageField(blank=True, null=True)
+    title = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(max_length=2000, blank=True, null=True)
+    note = models.CharField(max_length=200, blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        if self.title is None:
+            return self.description[:20]
         return self.title
 
