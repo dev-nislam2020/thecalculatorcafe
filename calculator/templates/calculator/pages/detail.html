@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Calculation - {{block.super}}
+{% endblock title %}
+
+
+{% block content %}
+    <!-- hero section start here -->
+    <section>
+        <div  class="container detail row">
+            <h2 class="title">{{calculation_detail.name | capfirst}} Calculator</h2>
+            <ul class="breadcrumb row">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">All free Calculator</a></li>
+                <li>{{calculation_detail.name | capfirst}} Calculator</li>
+            </ul>
+        </div>
+    </section>
+    <!-- hero section end here -->
+
+    <!-- main section start here -->
+    <section>
+        <div class="container row main-detail">
+            <div class="detail row main-side">
+                <p>
+                    {{calculation_detail.description}}
+                </p>
+                {{calculator_template}}
+            </div>
+            <div class="detail row aside">
+                <h3 class="main-detail-title">Try other Calculator</h3>
+                <ul>
+                    {% for tag in tags %}
+                    <li><a href="{{tag.get_absolute_url}}"><span class="main-icon">&#8250;</span>{{tag}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- main section end here -->
+
+{% endblock content %}

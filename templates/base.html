@@ -9,12 +9,39 @@
     <!-- Coustom CSS -->
     <link href="{% static 'css/global.css' %}" rel="stylesheet">
 
-    <title>TheCalculatorCafe</title>
+    <title>
+      {% block title %}
+      TheCalculatorCafe
+      {% endblock title %}
+      </title>
   </head>
   <body>
-    {% include "navber.html" %}
-    <h1>welcome back mohammud nazmul hoque</h1>
-    {% include "footer.html" %}
+    <!-- head section start here -->
+    <header>
+        <nav class="container row row-content">
+            <a class="brand" href="#">The Calculator Cafe</a>
+            <ul class="row">
+                <li><a href="{% url 'index' %}">home</a></li>
+                <li><a href="#">about</a></li>
+                <li><a href="#">contact</a></li>
+                <li><a href="#">priviciy</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- head section end here -->
+
+    <!-- add here content -->
+    {% block content %}
+
+    {% endblock content %}
+    <!-- footer section start here -->
+    <footer>
+        <div class="container footer-section">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+        </div>
+    </footer>
+    <!-- footer section end here -->
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script src="{% static 'js/global.js' %}"></script>

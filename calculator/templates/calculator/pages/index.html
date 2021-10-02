@@ -1,1 +1,35 @@
 {% extends "base.html" %}
+
+{% block title %}
+    Home - {{block.super}}
+{% endblock title %}
+
+
+{% block content %}
+<!-- hero section start here -->
+<section>
+    <div class="container row row-content hero">
+        <h1 class="title">Lorem ipsum dolor sit amet.</h1>
+        <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem adipisci iure porro rem autem cupiditate eligendi similique eos saepe architecto.</p>
+    </div>
+</section>
+<!-- hero section end here -->
+<!-- main section start here -->
+<section>
+    <div class="container main">
+        <h2 class="main-title">Lorem, ipsum dolor.</h2>
+        <div class="row row-content main-content">
+            {% for calculation in calculation_list %}
+            <div class="item">
+                <a href="{{calculation.get_absolute_url}}">
+                    <span class="main-icon">&#8250;</span>{{calculation}}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- main section end here -->
+
+
+{% endblock content %}

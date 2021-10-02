@@ -1,0 +1,23 @@
+<div class="py">
+    <h3>Calculat your absolute value here</h3>
+    <div class="py row">
+        <div>
+            <label for="">enter number</label>
+            <input type="number" name="number1" id="value1">
+        </div>
+        <input type="button" value="submit" id="myBtn">
+    </div>
+    <h2 id="demo">
+        Absolute Value
+    </h2>
+</div>
+<script>
+    document.getElementById("myBtn").addEventListener("click", displayAbs);
+    function displayAbs() {
+        let first = document.getElementById('value1').value;
+        let value = parseInt(first);
+        let abs = Math.abs(value);
+        result  = "Absolute Value here " + abs;
+        document.getElementById("demo").innerHTML = result;
+    }
+</script>

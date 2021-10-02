@@ -1,0 +1,27 @@
+<div class="py">
+    <h3>Calculat your area of rectangle here</h3>
+    <div class="py row calculator">
+        <div>
+            <label for="">enter lenght of rectangle</label>
+            <input type="number" name="number1" id="value1">
+        </div>
+        <div>
+            <label for="">enter width of rectangle</label>
+            <input type="number" name="number2" id="value2">
+        </div>
+        <input type="button" value="submit" id="myBtn">
+    </div>
+    <h2 id="demo">
+        Area here
+    </h2>
+</div>
+<script>
+    document.getElementById("myBtn").addEventListener("click", displayArea);
+    function displayArea() {
+        let first = document.getElementById('value1').value;
+        let second = document.getElementById('value2').value;
+        let area = parseInt(first) * parseInt(second);
+        result  = "Area here (L * W) " + area;
+        document.getElementById("demo").innerHTML = result;
+    }
+</script>

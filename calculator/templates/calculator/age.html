@@ -1,0 +1,44 @@
+<div class="py">
+    <h3>Calculat your age here</h3>
+    <div class="py row">
+        <div>
+            <label for="">Select age and hit enter</label>
+            <input type="date" name="brithday" id="dateInput">
+        </div>
+        <input type="button" value="submit" id="myBtn">
+    </div>
+    <h2 id="demo">
+        Your age is
+    </h2>
+</div>
+<script>
+    document.getElementById("myBtn").addEventListener("click", displayDate);
+    function displayDate() {
+        let brithday = document.getElementById('dateInput').value;
+        let age = getAge(brithday);
+    }
+
+    function getAge(dateString) 
+    {
+        const today = new Date();
+        const birthDate = new Date(dateString);
+
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = Math.abs(today.getMonth() - (birthDate.getMonth() + 1));
+        let d = 30 - birthDate.getDate();
+        let days = today.getDate() + d;
+
+        if(days >= 30){
+            days = days - 30;
+            months = months + 1;
+        }
+
+        if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) 
+        {
+            years--;
+        }
+        age = "Your age is " + years + " years " + months + " months " + days + " days."
+        document.getElementById("demo").innerHTML = age;
+        return years;
+    }
+</script>

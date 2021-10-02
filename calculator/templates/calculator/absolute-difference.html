@@ -1,0 +1,28 @@
+<div class="py">
+    <h3>Calculat your absolute difference here</h3>
+    <div class="py row calculator">
+        <div>
+            <label for="">enter first number</label>
+            <input type="number" name="number1" id="value1">
+        </div>
+        <div>
+            <label for="">enter second number</label>
+            <input type="number" name="number2" id="value2">   
+        </div>
+        <input type="button" value="submit" id="myBtn">
+    </div>
+    <h2 id="demo">
+        Difference here
+    </h2>
+</div>
+<script>
+    function displayAbs() {
+        let first = document.getElementById('value1').value;
+        let second = document.getElementById('value2').value;
+        let sub = parseInt(first) - parseInt(second);
+        let abs = Math.abs(sub);
+        result  = "Difference here " + sub + " and Absolute difference " + abs;
+        document.getElementById("demo").innerHTML = result;
+    }
+    document.getElementById("myBtn").addEventListener("click", displayAbs);
+</script>
