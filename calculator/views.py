@@ -27,7 +27,8 @@ def detail(request, slug):
     calculation_detail = get_object_or_404(Calculator, slug=slug)
     tag = calculation_detail.tag
     tags = tag.caculators.all()
-    calculator_template = render_to_string(f'calculator/{calculation_detail.slug}.html')
+    # calculator_template = render_to_string(f'calculator/{calculation_detail.slug}.html')
+    calculator_template = f'../{calculation_detail.slug}.html'
     context = {
         'calculation_detail':calculation_detail,
         'calculator_template':calculator_template,
