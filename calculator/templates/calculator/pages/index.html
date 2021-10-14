@@ -4,32 +4,28 @@
     Home - {{block.super}}
 {% endblock title %}
 
-
 {% block content %}
-<!-- hero section start here -->
-<section>
-    <div class="container row row-content hero">
-        <h1 class="title">Lorem ipsum dolor sit amet.</h1>
-        <p class="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem adipisci iure porro rem autem cupiditate eligendi similique eos saepe architecto.</p>
-    </div>
-</section>
-<!-- hero section end here -->
-<!-- main section start here -->
-<section>
-    <div class="container main">
-        <h2 class="main-title">Lorem, ipsum dolor.</h2>
-        <div class="row row-content main-content">
-            {% for calculation in calculation_list %}
-            <div class="item">
-                <a href="{{calculation.get_absolute_url}}">
-                    <span class="main-icon">&#8250;</span>{{calculation}}
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-<!-- main section end here -->
+<!-- Hero -->
+<div class="container">
+  <div class="calculator-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Better Experience For Calculation</h1>
+    <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+  </div>
+</div>
 
-
+<!-- Main -->
+<main>
+  <div class="container py-5">
+    <div class="row text-center calculator-list g-3">
+      <h4 class="mb-3 pb-4 border-bottom">Our Calculators</h4>
+      <!-- Django -->
+      {% for calculator in calculation_list %}
+      <div class="col-12 col-sm-4">
+        <a href="{{calculator.get_absolute_url}}">{{calculator}} calculator</a>
+      </div>
+      {% endfor %}
+      <!-- Content -->
+    </div>
+  </div>
+</main>
 {% endblock content %}

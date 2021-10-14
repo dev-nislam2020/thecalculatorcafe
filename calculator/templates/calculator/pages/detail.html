@@ -1,43 +1,57 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Calculation - {{block.super}}
+  {{block.super}} - Calculator
 {% endblock title %}
 
-
 {% block content %}
-    <!-- hero section start here -->
-    <section>
-        <div  class="container detail row">
-            <h2 class="title">{{calculation_detail.name | capfirst}} Calculator</h2>
-            <ul class="breadcrumb row">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">All free Calculator</a></li>
-                <li>{{calculation_detail.name | capfirst}} Calculator</li>
-            </ul>
-        </div>
+<!-- Main -->
+<main>
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <h2>{{calculation_detail.name | capfirst}} calculator</h2>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'calculator_list' %}">All Calculator</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{calculation_detail.name | capfirst}} calculator</li>
+      </ol>
+    </nav>
+    <section class="row">
+      <div class="col-12 col-md-8">
+        <!-- Calculator Detail  -->
+        <article>
+          <h4>{{calculation_detail.name | capfirst}} calculator</h4>
+          <p class="text-muted p-fs">
+            {{calculation_detail.description}}
+          </p>
+        </article>
+        <!-- Calculator Form  -->
+        {{calculator_template}}
+        <!-- Calculator Detail  -->
+        <article>
+            <h4>Lorem ipsum dolor sit.</h4>
+            <p class="text-muted p-fs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium est quibusdam nesciunt dolores corporis doloremque neque veniam quae tempora eum accusamus nulla totam commodi illum aspernatur harum ab ut, maxime, in molestias optio repellat ad debitis? Perferendis voluptatem totam rerum libero atque nisi, accusamus ut? Quam labore voluptate distinctio ipsam!</p>
+        </article>
+      </div>
+      <!-- Calculator List  -->
+      <div class="col-12 col-md-4">
+        <h4>Other Calculator</h4>
+        <ul class="list-unstyled calculator-list mb-0">
+          {% for calculator in tags %}
+            {% if calculator.name in calculation_detail.name %}
+            
+            {% else %}
+              <li>
+                <a href="{{calculator.get_absolute_url}}">{{calculator | capfirst}} calculator</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
     </section>
-    <!-- hero section end here -->
-
-    <!-- main section start here -->
-    <section>
-        <div class="container row main-detail">
-            <div class="detail row main-side">
-                <p>
-                    {{calculation_detail.description}}
-                </p>
-                {{calculator_template}}
-            </div>
-            <div class="detail row aside">
-                <h3 class="main-detail-title">Try other Calculator</h3>
-                <ul>
-                    {% for tag in tags %}
-                    <li><a href="{{tag.get_absolute_url}}"><span class="main-icon">&#8250;</span>{{tag}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- main section end here -->
-
+  </div>
+</main>
 {% endblock content %}
+
+

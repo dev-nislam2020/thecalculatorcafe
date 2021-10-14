@@ -1,28 +1,32 @@
-<div class="py">
-    <h3>Calculat your absolute difference here</h3>
-    <div class="py row calculator">
-        <div>
-            <label for="">enter first number</label>
-            <input type="number" name="number1" id="value1">
-        </div>
-        <div>
-            <label for="">enter second number</label>
-            <input type="number" name="number2" id="value2">   
-        </div>
-        <input type="button" value="submit" id="myBtn">
+<div class="row g-3 mb-3 py-2">
+    <div class="col-sm-5">
+      <label for="brithday" class="form-label">Enter first number</label>
+      <input type="number" class="form-control" name="number1" id="value1">
     </div>
-    <h2 id="demo">
-        Difference here
-    </h2>
+    <div class="col-sm-5">
+        <label for="brithday" class="form-label">Enter second number</label>
+        <input type="number" class="form-control" name="number2" id="value2">
+    </div>
+    <div class="col-sm-10">
+      <button class="w-100 btn btn-primary" id="myBtn">Calculat</button>
+    </div>
+    <div class="col-sm-10">
+        <h4 class="text-success" id="demo"></h4>
+    </div>
 </div>
 <script>
     function displayAbs() {
         let first = document.getElementById('value1').value;
         let second = document.getElementById('value2').value;
-        let sub = parseInt(first) - parseInt(second);
-        let abs = Math.abs(sub);
-        result  = "Difference here " + sub + " and Absolute difference " + abs;
-        document.getElementById("demo").innerHTML = result;
+        if (first === "" || second === ""){
+            result  = "fields are empty. insart value then Calculat";
+            document.getElementById("demo").innerHTML = result;
+        }else{
+            let sub = parseInt(first) - parseInt(second);
+            let abs = Math.abs(sub);
+            result  = "Difference here " + sub + " and Absolute difference " + abs;
+            document.getElementById("demo").innerHTML = result;
+        }
     }
     document.getElementById("myBtn").addEventListener("click", displayAbs);
 </script>
